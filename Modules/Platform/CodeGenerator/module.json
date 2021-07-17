@@ -1,0 +1,13 @@
+{
+    "name": "CodeGenerator",
+    "alias": "codegenerator",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Platform\\CodeGenerator\\Providers\\CodeGeneratorServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

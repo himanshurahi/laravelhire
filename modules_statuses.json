@@ -1,0 +1,13 @@
+{
+    "CodeGenerator": true,
+    "Core": true,
+    "Companies": true,
+    "Account": true,
+    "Announcement": true,
+    "MenuManager": true,
+    "Notifications": true,
+    "Settings": true,
+    "User": true,
+    "Dashboard": true,
+    "AdminJobs": true
+}

@@ -1,0 +1,13 @@
+{
+    "name": "MenuManager",
+    "alias": "menumanager",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Platform\\MenuManager\\Providers\\MenuManagerServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

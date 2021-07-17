@@ -1,0 +1,13 @@
+{
+    "name": "AdminJobs",
+    "alias": "adminjobs",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\AdminJobs\\Providers\\AdminJobsServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
