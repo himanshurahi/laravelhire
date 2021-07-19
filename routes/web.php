@@ -26,3 +26,4 @@ Route::post("/post-job", [App\Http\Controllers\JobsController::class, 'store']);
 Route::post("/job-upload-file", [App\Http\Controllers\JobsController::class, 'uploadfile']);
 Route::post("/addfiles", [App\Http\Controllers\JobsController::class, 'AddFiles']);
 Route::delete("/job-upload-file-delete", [App\Http\Controllers\JobsController::class, 'removeFile']);
+Route::get("/jobs", [App\Http\Controllers\JobsController::class, 'listJobs']);

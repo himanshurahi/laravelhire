@@ -6,6 +6,12 @@ $.ajaxSetup({
 let count = 0
 let job_id;
 let filenames = [];
+
+
+$("#prev").click(function(){
+    
+})
+
 $("#next").prop("disabled", false).click(function () {
     loading(true)
     if (count >= 3) {

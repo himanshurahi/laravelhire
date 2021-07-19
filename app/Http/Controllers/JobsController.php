@@ -64,7 +64,7 @@ class JobsController extends Controller
 
         $jobs = AdminJob::where('id', '=', $request->input('job_id'))->first();
         // return $jobs;
-        $attachment = $jobs->attach(public_path('assets/img/favicon.png'));
+        // $attachment = $jobs->attach(public_path('assets/img/favicon.png'));
         foreach ($request->input("filenames") as $value) {
             $jobs->attach(public_path('files/' . $value));
         }
@@ -73,7 +73,13 @@ class JobsController extends Controller
 
     public function removeFile(Request $request)
     {
-        unlink(public_path('files/'.$request->input("file_name")));
+        unlink(public_path('files/' . $request->input("file_name")));
         return response()->json(['success' => 'File Deleted']);
+    }
+
+    public function listJobs()
+    {
+        $jobs = AdminJob::all();
+        return view("jobs.list_jobs", compact('jobs'));
     }
 }
