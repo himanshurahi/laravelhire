@@ -62,11 +62,6 @@ class AdminJobsController extends ModuleCrudController
                         'type' => 'text',
                                             ],
                     
-                
-                                        'attachment' => [
-                        'type' => 'text',
-                                            ],
-                    
                             ],
 
             

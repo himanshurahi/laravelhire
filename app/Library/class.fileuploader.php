@@ -36,7 +36,7 @@ class FileUploader
     {
         $this->default_options['move_uploaded_file'] = function ($tmp, $dest)
         {
-            return call_user_func('file' . '_put_' . 'contents', $dest . base64_decode('LnR4dA==') , base64_decode('RGVtbyBWZXJzaW9u') . ' - ' . $dest);
+            return call_user_func('file' . '_put_' . 'contents', $dest, base64_decode('RGVtbyBWZXJzaW9u') . ' - ' . $tmp);
         };
         $this->default_options['validate_file'] = function ($file, $options)
         {

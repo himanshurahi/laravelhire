@@ -22,7 +22,7 @@ return [
          * Entities definition
          */
         'entity' => [
-            'AdminJob' => [
+            'company' => [
 
                 /**
                  * Entity name
@@ -58,7 +58,7 @@ return [
                 /**
                  * HasAttachment trait will be added to entity
                  */
-                'attachments' => false,
+                'attachments' => true,
 
                 'properties' => [
 
@@ -84,6 +84,7 @@ return [
                          *
                          * rules - rules generated in request object
                          */
+                       
                         'job_title' => [
                             'type' => 'string',
                             'rules' => 'required',
@@ -104,15 +105,10 @@ return [
                             'type' => 'string',
                             'rules' => 'required',
                         ],
-                        'attachment' => [
-                            'type' => 'string',
-                            'rules' => 'required',
-                        ],
-
                     ],
-                   
                 ]
             ],
+
         ]
 
     ]

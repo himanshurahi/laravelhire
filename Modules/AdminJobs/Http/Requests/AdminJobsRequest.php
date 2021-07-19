@@ -24,7 +24,7 @@ class AdminJobsRequest extends Request
     public function rules()
     {
         return [
-            'job_title' => 'required' ,'job_description' => 'required' ,'skills' => 'required' ,'job_duration' => 'required' ,'budget' => 'required' ,'attachment' => 'required' ,
+            'job_title' => 'required' ,'job_description' => 'required' ,'skills' => 'required' ,'job_duration' => 'required' ,'budget' => 'required' ,
         ];
     }
 

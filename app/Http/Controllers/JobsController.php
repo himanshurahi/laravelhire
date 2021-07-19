@@ -12,6 +12,9 @@ class JobsController extends Controller
 
     public function index()
     {
+        // $job =  AdminJob::first();
+        // return $job->attachments()->get();
+        
         return view("jobs.post_job");
     }
 
@@ -32,7 +35,11 @@ class JobsController extends Controller
         $jobs->skills = $request->skills;
         $jobs->job_duration = $request->job_duration;
         $jobs->budget = $request->budget;
+
+        
+        // return public_path('assets/img/favicon.png');
         $jobs->save();
+        $attachment = $jobs->attach(public_path('assets/img/favicon.png'));
         return view("jobs.post_job");
     }
     public function uploadfile(Request $request)

@@ -15,7 +15,7 @@ use Carbon\Carbon;
 class AdminJob extends Model  implements Ownable 
 {
 
-    use SoftDeletes  , HasMorphOwner     ;
+    use SoftDeletes  , HasMorphOwner     , HasAttachment  ;
 
     
 
@@ -43,7 +43,6 @@ class AdminJob extends Model  implements Ownable
                                 'skills',
                                 'job_duration',
                                 'budget',
-                                'attachment',
             ];
 
 

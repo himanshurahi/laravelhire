@@ -45,13 +45,6 @@ class AdminJobForm extends Form
                     ]);
 
                 
-            
-                
-                    $this->add('attachment', 'text', [
-                    'label' => trans('adminjobs::adminjobs.form.attachment'),
-                    ]);
-
-                
                     
     
 
