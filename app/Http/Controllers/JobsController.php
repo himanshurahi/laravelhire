@@ -14,7 +14,7 @@ class JobsController extends Controller
     {
         // $job =  AdminJob::first();
         // return $job->attachments()->get();
-        
+
         return view("jobs.post_job");
     }
 
@@ -36,32 +36,32 @@ class JobsController extends Controller
         $jobs->job_duration = $request->job_duration;
         $jobs->budget = $request->budget;
 
-        
+
         // return public_path('assets/img/favicon.png');
         $jobs->save();
-        $attachment = $jobs->attach(public_path('assets/img/favicon.png'));
-        return view("jobs.post_job");
+        // $attachment = $jobs->attach(public_path('assets/img/favicon.png'));
+        // return view("jobs.post_job");
+        return response()->json(['success' => $jobs]);
     }
     public function uploadfile(Request $request)
     {
-        // return $req->file('dragndrop');
+        $image = $request->file('file');
 
-        // initialize FileUploader
-        $FileUploader = new FileUploader('dragndrop', array(
-            // options
-            'limit' => 4,
-            'uploadDir' => storage_path('app/public/'),
-            'title' => 'auto'
-        ));
+        $avatarName = $image->getClientOriginalName();
+        $image->move(public_path('files'), $avatarName);
 
-        // upload
-        $upload = $FileUploader->upload();
-        return $upload;
+
+        return response()->json(['success' => $avatarName]);
     }
 
-    public function removeFile(Request $request)
+    // public function removeFile(Request $request)
+    // {
+    //     unlink(storage_path('app/public/'.$_POST['file']));
+    //     exit;
+    // }
+
+    public function AddFiles(Request $request)
     {
-        unlink(storage_path('app/public/'.$_POST['file']));
-        exit;
+        return $request->all();
     }
 }

@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="stylesheet" href="assets/css/core.css">
     <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.0/min/dropzone.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.0/dropzone.js"></script>
     {{-- <script src="https://innostudio.de/fileuploader/js/script.js"></script> --}}
 </head>
 <body>

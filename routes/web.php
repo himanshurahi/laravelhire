@@ -24,4 +24,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get("/post-job", [App\Http\Controllers\JobsController::class, 'index']);
 Route::post("/post-job", [App\Http\Controllers\JobsController::class, 'store']);
 Route::post("/job-upload-file", [App\Http\Controllers\JobsController::class, 'uploadfile']);
+Route::post("/addfiles", [App\Http\Controllers\JobsController::class, 'AddFiles']);
 Route::post("/job-upload-file-delete", [App\Http\Controllers\JobsController::class, 'removeFile']);
