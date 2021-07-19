@@ -201,58 +201,7 @@
 @endsection
 
 @section('scripts')
-    
-    <script>
-       let count = 0
-        $("#next").click(function(){
-            if(count >= 3){
-                alert("submit form")
-                return;
-            }
-            switchClass(count)
-            $(`[data-id="${count}"]`).removeClass("is-active");
-            //do the task
-            
-            count++;
-            $(`[data-id="${count}"]`).addClass("is-active");
-                
-        })
-
-        function switchClass(count){
-           $(`[data-step-id="${count}"]`).addClass("is-completed");
-           $(`[data-step-id="${count}"]`).removeClass("is-active");
-
-           $(`[data-step-id="${count+1}"]`).addClass("is-active");
-        }
-
-            $("#submit_button").click(function(event){
-            event.preventDefault();
-            let skills = []
-            // console.log($(document).find(".tag")[0].innerText.split()[0].replace('x', '').trim())
-            let tags =  $(document).find(".tag")
-            for (let index = 0; index < tags.length; index++) {
-                const element = tags[index];
-                skills.push(element.innerText.split()[0].replace('x', '').trim())
-             }
-             $("#skills").val(skills.join());
-             $("#myform").submit();
-           
-
-        })
-
-        $("#file").change(function(){
-            console.log($(this))
-        })
-
-        
-        $(document).ready(function() {
-        $('#files').fileuploader({
-            // Options will go here
-        });
-    });
-
-        
-    </script>
+    <script src="assets/js/myapp.js"></script>
 
 @endsection
 
