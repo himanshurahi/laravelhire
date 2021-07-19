@@ -161,6 +161,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Bnb\Laravel\Attachments\AttachmentsServiceProvider::class,
+
 
         /*
          * Package Service Providers...

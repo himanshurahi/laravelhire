@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use \FileUploader;
 use Modules\AdminJobs\Entities\AdminJob;
 
+
 class JobsController extends Controller
 {
     //
@@ -54,14 +55,25 @@ class JobsController extends Controller
         return response()->json(['success' => $avatarName]);
     }
 
-    // public function removeFile(Request $request)
-    // {
-    //     unlink(storage_path('app/public/'.$_POST['file']));
-    //     exit;
-    // }
 
+
+    // Bnb\Laravel\Attachments\HasAttachment;
     public function AddFiles(Request $request)
     {
-        return $request->all();
+
+
+        $jobs = AdminJob::where('id', '=', $request->input('job_id'))->first();
+        // return $jobs;
+        $attachment = $jobs->attach(public_path('assets/img/favicon.png'));
+        foreach ($request->input("filenames") as $value) {
+            $jobs->attach(public_path('files/' . $value));
+        }
+        return response()->json(['success' => 'Done']);
+    }
+
+    public function removeFile(Request $request)
+    {
+        unlink(public_path('files/'.$request->input("file_name")));
+        return response()->json(['success' => 'File Deleted']);
     }
 }

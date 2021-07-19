@@ -5,7 +5,7 @@ $.ajaxSetup({
 });
 let count = 0
 let job_id;
-let uuid = [];
+let filenames = [];
 $("#next").prop("disabled", false).click(function () {
     loading(true)
     if (count >= 3) {
@@ -74,7 +74,7 @@ $("#next").prop("disabled", false).click(function () {
                 url: "addfiles",
                 type: "post",
                 data: {
-                    uuid,
+                    filenames,
                     job_id
                 },
                 success: function (response) {

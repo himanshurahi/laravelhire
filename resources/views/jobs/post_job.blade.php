@@ -233,7 +233,8 @@
                 success: function(file, response) {
                     // console.log(file)
                     console.log(response);
-                    uuid.push(file.upload.uuid);
+                    console.log(file)
+                    filenames.push(file.upload.filename);
                 },
                 error: function(file, response) {
                     console.log("Error")
@@ -242,6 +243,24 @@
                 removedfile: function(file) {
                     file.previewElement.remove();
                     console.log(file)
+                    // /job-upload-file-delete
+                    $.ajax({
+                url: "job-upload-file-delete",
+                type: "delete",
+                data: {
+                   file_name : file.upload.filename
+                },
+                success: function (response) {
+                    console.log(response)
+                    // You will get response from your PHP page (what you echo or print)
+                   
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                   
+                }
+            });
                 }
             };
     </script>
