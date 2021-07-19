@@ -201,7 +201,7 @@
                                 </div>
                             </div>
                             <div class="end">
-                                <span class="tag is-rounded is-secondary">3 months</span>
+                                <span class="tag is-rounded is-secondary">{{ \Carbon\Carbon::parse($job->created_at)->diffForHumans()}}</span>
                                 <span class="time"><i class="sl sl-icon-clock"></i>{{ \Carbon\Carbon::parse($job->created_at)->format('d/m/Y')}}</span>
                             </div>
                         </div>

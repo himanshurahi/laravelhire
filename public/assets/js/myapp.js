@@ -109,7 +109,7 @@ $("#next").prop("disabled", false).click(function () {
 
             $("#next").text("Redirecting..")
             setTimeout(() => {
-                window.location.href = "/post-job"
+                window.location.href = "/jobs"
             }, 2000)
             break;
         case 3:
