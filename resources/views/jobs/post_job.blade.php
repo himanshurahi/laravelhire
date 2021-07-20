@@ -149,48 +149,24 @@
                         </div>
                         <!-- Step content -->
                         <div class="step-content has-text-centered social" data-id="2">
-                            <!-- Field -->
-                            <div class="field">
-                                <div class="field-label is-normal">
-                                    <label class="label">Facebook account</label>
-                                </div>
-                                <div class="field-body">
-                                    <div class="field">
-                                        <div class="control">
-                                            <input class="input" name="facebook2" id="facebook2" type="text"
-                                                placeholder="Facebook account url" autofocus data-validate="require">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Field -->
-                            <div class="field">
-                                <div class="field-label is-normal">
-                                    <label class="label">Twitter account</label>
-                                </div>
-                                <div class="field-body">
-                                    <div class="field">
-                                        <div class="control">
-                                            <input class="input" name="twitter2" id="twitter2" type="text"
-                                                placeholder="Twitter account url" autofocus data-validate="require">
-                                        </div>
-                                    </div>
+                            <div class="columns is-vcentered pt-30">
+                                <!-- Demo section -->
+                                <div class="column is-10 is-offset-1">
+                                    <table class="responsive-table is-accent mb-40" style="width: 100%">
+                                        <tbody>
+                                            <tr style="background-color: #ff8017">
+                                                <th>URL</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                
+                                  
+                                  
                                 </div>
                             </div>
-                            <!-- Field -->
-                            <div class="field">
-                                <div class="field-label is-normal">
-                                    <label class="label">Dribbble account</label>
-                                </div>
-                                <div class="field-body">
-                                    <div class="field">
-                                        <div class="control">
-                                            <input class="input" name="dribbble2" id="dribbble2" type="text"
-                                                placeholder="Dribbble account url" autofocus data-validate="require">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                
+                         
                         </div>
                         <!-- Step content -->
                         <div class="step-content has-text-centered final" data-id="3">
@@ -202,7 +178,11 @@
                     </div>
                     <!-- Steps navigation -->
                     <div class="steps-actions">
+                        <a href="#"
+                        style="visibility: hidden"
+                        class="button secondary-btn button-cta is-bold raised btn-align modal-trigger"  data-modal="vertical-form-modal" id="add_links_button">Add Links</a>
                         <div class="steps-action">
+                           
                             <a href="#" id="prev" data-nav="previous1"
                                 class="button button-cta is-light is-bold btn-align">Back</a>
                             <a href="#" id="next" data-nav="next1"
@@ -214,7 +194,38 @@
         </div>
     </div>
 
+
+     
+        <!-- Modal trigger -->
+        {{-- <a class="button button-cta btn-align primary-btn raised modal-trigger" data-modal="vertical-form-modal">Open modal</a> --}}
+        <!-- /Modal trigger --> 
+        
+        <!-- Modal Markup -->
+        <div id="vertical-form-modal" class="modal modal-sm">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="flex-card simple-shadow">
+                    <div class="card-body">
+                        <h2 class="title has-text-centered is-3 mb-40">Add Links</h2>
+                        <div class="control-material is-accent">
+                            <input class="material-input" type="text" id="links" required>
+                            <span class="material-highlight"></span>
+                            <span class="bar"></span>
+                            <label>Enter Link *</label>
+                        </div>
+                        <div class="mt-20">
+                            <button class="button button-cta btn-align accent-btn raised is-fullwidth no-lh modal-dismiss" id="add_links">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="modal-close is-large is-hidden" aria-label="close"></button>
+        </div>
+        <!-- /Modal Markup -->
+
 @endsection
+
+
 
 @section('scripts')
     <script src="assets/js/myapp.js"></script>

@@ -3,9 +3,12 @@ $.ajaxSetup({
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
+
 let count = 0
 let job_id;
 let filenames = [];
+let linksArray = [];
+
 
 
 $("#prev").click(function(){
@@ -13,11 +16,16 @@ $("#prev").click(function(){
 })
 
 $("#next").prop("disabled", false).click(function () {
-    loading(true)
+    
+    // loading(true)
     if (count >= 3) {
         alert("submit form")
         return;
     }
+    switchClass(count)
+            $(`[data-id="${count}"]`).removeClass("is-active");
+            count++;
+            $(`[data-id="${count}"]`).addClass("is-active");
 
 
     // do the task
@@ -38,81 +46,106 @@ $("#next").prop("disabled", false).click(function () {
             let job_duration = $("[name='job_duration']").val()
             let budget = $("[name='job_budget']").val()
             let skills1 = $("#skills").val();
-            $.ajax({
-                url: "post-job",
-                type: "post",
-                data: {
-                    job_title,
-                    job_description,
-                    job_duration,
-                    budget,
-                    skills: skills1
-                },
-                success: function (response) {
-                    console.log(response)
-                    // You will get response from your PHP page (what you echo or print)
-                    job_id = response.success.id || null;
-                    loading(false)
-                    switchClass(count)
-                    $(`[data-id="${count}"]`).removeClass("is-active");
-                    count++;
-                    $(`[data-id="${count}"]`).addClass("is-active");
+            // $.ajax({
+            //     url: "post-job",
+            //     type: "post",
+            //     data: {
+            //         job_title,
+            //         job_description,
+            //         job_duration,
+            //         budget,
+            //         skills: skills1
+            //     },
+            //     success: function (response) {
+            //         console.log(response)
+            //         // You will get response from your PHP page (what you echo or print)
+            //         job_id = response.success.id || null;
+            //         loading(false)
+            //         switchClass(count)
+            //         $(`[data-id="${count}"]`).removeClass("is-active");
+            //         count++;
+            //         $(`[data-id="${count}"]`).addClass("is-active");
 
-                },
-                error: function (error) {
-                    let errors = error.responseJSON;
-                    errorsHtml = '<div style = "background-color: red;color: white;text-align: initial;padding: 10px;" class="alert alert-danger"><ul>';
+            //     },
+            //     error: function (error) {
+            //         let errors = error.responseJSON;
+            //         errorsHtml = '<div style = "background-color: red;color: white;text-align: initial;padding: 10px;" class="alert alert-danger"><ul>';
 
-                    $.each(errors.errors, function (key, value) {
-                        errorsHtml += '<li>' + value[0] + '</li>'; // showing only the first error.
-                    });
-                    errorsHtml += '</ul></div>';
-                    $('#errors').html(errorsHtml);
-                    loading(false)
-                }
-            });
+            //         $.each(errors.errors, function (key, value) {
+            //             errorsHtml += '<li>' + value[0] + '</li>'; // showing only the first error.
+            //         });
+            //         errorsHtml += '</ul></div>';
+            //         $('#errors').html(errorsHtml);
+            //         loading(false)
+            //     }
+            // });
 
 
             break;
         case 1:
             console.log("upload File")
-            $.ajax({
-                url: "addfiles",
-                type: "post",
-                data: {
-                    filenames,
-                    job_id
-                },
-                success: function (response) {
-                    console.log(response)
-                    // You will get response from your PHP page (what you echo or print)
-                    loading(false)
-                    switchClass(count)
-                    $(`[data-id="${count}"]`).removeClass("is-active");
-                    count++;
-                    $(`[data-id="${count}"]`).addClass("is-active");
+            // $.ajax({
+            //     url: "addfiles",
+            //     type: "post",
+            //     data: {
+            //         filenames,
+            //         job_id
+            //     },
+            //     success: function (response) {
+            //         console.log(response)
+            //         // You will get response from your PHP page (what you echo or print)
+            //         loading(false)
+            //         switchClass(count)
+            //         $(`[data-id="${count}"]`).removeClass("is-active");
+            //         count++;
+            //         $(`[data-id="${count}"]`).addClass("is-active");
 
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus, errorThrown);
-                    loading(false)
-                }
-            });
+            //     },
+            //     error: function (jqXHR, textStatus, errorThrown) {
+            //         console.log(textStatus, errorThrown);
+            //         loading(false)
+            //     }
+            // });
             break;
         case 2:
             console.log("Social Limks")
-            loading(false)
-            switchClass(count)
-            $(`[data-id="${count}"]`).removeClass("is-active");
-            count++;
-            $(`[data-id="${count}"]`).addClass("is-active");
+            $("#add_links_button").css("visibility", "visible");
+            $("#add_links").click(function(){
+                $(".responsive-table > tbody").html("<tr style='background-color: #ff8017'><th>URL</th><th>Actions</th></tr>");
+                let link = $("#links").val();
 
-            $("#next").text("Redirecting..")
-            setTimeout(() => {
-                window.location.href = "/jobs"
-            }, 2000)
+                if(/^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(link)){
+                    linksArray.push({'url' : link});
+                } else {
+                    alert("invalid URL");
+                }
+
+                
+                linksArray.map(function(value, index){
+                    $(".responsive-table > tbody").append(`<tr id = link-id-${index}><td data-th='ID' >${value.url}</td><td data-th='Actions'><button class='button is-small btn-align accent-btn raised rounded btn-outlined' onclick = 'deleteFunc(${index})' >Remove</button></td></tr>`)
+                })
+            })
+
+            $("#next").click(function(){
+                console.log(linksArray);
+                $("#add_links_button").css("visibility", "hidden");
+            })
+
+            
+
+            // loading(false)
+            // switchClass(count)
+            // $(`[data-id="${count}"]`).removeClass("is-active");
+            // count++;
+            // $(`[data-id="${count}"]`).addClass("is-active");
+
+            // $("#next").text("Redirecting..")
+            // setTimeout(() => {
+            //     window.location.href = "/jobs"
+            // }, 2000)
             break;
         case 3:
+           
             console.log("Finished")
             break;
 
@@ -140,6 +173,12 @@ function loading(load) {
         $("#next").text("Next")
         $("#next").removeClass("is-disabled");
     }
+}
+
+function deleteFunc(index){
+    $(document).find("#link-id-"+index).remove();
+    linksArray.splice(index, 1)
+    console.log(linksArray)
 }
 
 $("#submit_button").click(function (event) {
