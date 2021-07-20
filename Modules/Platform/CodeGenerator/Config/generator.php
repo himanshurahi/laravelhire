@@ -105,6 +105,10 @@ return [
                             'type' => 'string',
                             'rules' => 'required',
                         ],
+                        'social_links' => [
+                            'type' => 'text',
+                            'rules' => 'required',
+                        ],
                     ],
                 ]
             ],

@@ -10,22 +10,17 @@ let filenames = [];
 let linksArray = [];
 
 
+$("#prev").click(function () {})
 
-$("#prev").click(function(){
-    
-})
-
-$("#next").prop("disabled", false).click(function () {
-    
-    // loading(true)
+$("#next").prop("disabled", false).click(function () { // loading(true)
     if (count >= 3) {
         alert("submit form")
         return;
     }
     switchClass(count)
-            $(`[data-id="${count}"]`).removeClass("is-active");
-            count++;
-            $(`[data-id="${count}"]`).addClass("is-active");
+    $(`[data-id="${count}"]`).removeClass("is-active");
+    count++;
+    $(`[data-id="${count}"]`).addClass("is-active");
 
 
     // do the task
@@ -110,28 +105,50 @@ $("#next").prop("disabled", false).click(function () {
         case 2:
             console.log("Social Limks")
             $("#add_links_button").css("visibility", "visible");
-            $("#add_links").click(function(){
+            $("#add_links").click(function () {
                 $(".responsive-table > tbody").html("<tr style='background-color: #ff8017'><th>URL</th><th>Actions</th></tr>");
                 let link = $("#links").val();
 
-                if(/^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(link)){
-                    linksArray.push({'url' : link});
-                } else {
-                    alert("invalid URL");
-                }
-
-                
-                linksArray.map(function(value, index){
-                    $(".responsive-table > tbody").append(`<tr id = link-id-${index}><td data-th='ID' >${value.url}</td><td data-th='Actions'><button class='button is-small btn-align accent-btn raised rounded btn-outlined' onclick = 'deleteFunc(${index})' >Remove</button></td></tr>`)
+                if (/^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(link)) {
+                    linksArray.push({'url': link});
+                    $(".control-material").removeClass("has-error")
+                    hideModal()
+                } else { // alert("invalid URL");
+                    $(".control-material").addClass("has-error")
+                } linksArray.map(function (value, index) {
+                    $(".responsive-table > tbody").append(`<tr id = link-id-${index}><td data-th='ID' >${
+                        value.url
+                    }</td><td data-th='Actions'><button class='button is-small btn-align accent-btn raised rounded btn-outlined' onclick = 'deleteFunc(${index})' >Remove</button></td></tr>`)
                 })
             })
 
-            $("#next").click(function(){
-                console.log(linksArray);
+            $("#next").click(function () {
+                if (linksArray.length != 0) { // jobs-sociallinks
+                    console.log(linksArray);
+
+                    $.ajax({
+                        url: "jobs-sociallinks",
+                        type: "post",
+                        data: {
+                            social_links: JSON.stringify(linksArray),
+                            job_id: 1
+                        },
+                        success: function (response) {
+                            console.log(response)
+                            // You will get response from your PHP page (what you echo or print)
+
+
+                        },
+                        error: function (error) {
+                            console.log(error)
+                        }
+                    });
+
+
+                }
                 $("#add_links_button").css("visibility", "hidden");
             })
 
-            
 
             // loading(false)
             // switchClass(count)
@@ -145,7 +162,7 @@ $("#next").prop("disabled", false).click(function () {
             // }, 2000)
             break;
         case 3:
-           
+
             console.log("Finished")
             break;
 
@@ -175,12 +192,23 @@ function loading(load) {
     }
 }
 
-function deleteFunc(index){
-    $(document).find("#link-id-"+index).remove();
+function deleteFunc(index) {
+    $(document).find("#link-id-" + index).remove();
     linksArray.splice(index, 1)
     console.log(linksArray)
 }
 
+function hideModal() {
+
+    $(".modal-background").removeClass('scaleInCircle');
+    $(".modal-content").removeClass('scaleIn');
+    $(".modal-close").addClass('is-hidden');
+    setTimeout(() => {
+        $("#vertical-form-modal").removeClass('is-active');
+    }, 500)
+
+
+}
 $("#submit_button").click(function (event) {
     event.preventDefault();
     let skills = []

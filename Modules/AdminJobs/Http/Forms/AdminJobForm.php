@@ -45,6 +45,12 @@ class AdminJobForm extends Form
                     ]);
 
                 
+            
+                
+                    $this->add('social_links', 'textarea', [
+                    'label' => trans('adminjobs::adminjobs.form.social_links'),
+                    ]);
+                
                     
     
 

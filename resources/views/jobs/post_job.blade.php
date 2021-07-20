@@ -207,14 +207,14 @@
                 <div class="flex-card simple-shadow">
                     <div class="card-body">
                         <h2 class="title has-text-centered is-3 mb-40">Add Links</h2>
-                        <div class="control-material is-accent">
+                        <div class="control-material required is-accent">
                             <input class="material-input" type="text" id="links" required>
                             <span class="material-highlight"></span>
                             <span class="bar"></span>
                             <label>Enter Link *</label>
                         </div>
                         <div class="mt-20">
-                            <button class="button button-cta btn-align accent-btn raised is-fullwidth no-lh modal-dismiss" id="add_links">Save</button>
+                            <button class="button button-cta btn-align accent-btn raised is-fullwidth no-lh" id="add_links">Save</button>
                         </div>
                     </div>
                 </div>

@@ -43,6 +43,7 @@ class AdminJob extends Model  implements Ownable
                                 'skills',
                                 'job_duration',
                                 'budget',
+                                'social_links',
             ];
 
 

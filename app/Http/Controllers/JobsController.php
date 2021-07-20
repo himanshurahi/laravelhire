@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Request as RequestsRequest;
 use Illuminate\Http\Request;
 use \FileUploader;
 use Modules\AdminJobs\Entities\AdminJob;
@@ -81,5 +82,15 @@ class JobsController extends Controller
     {
         $jobs = AdminJob::all();
         return view("jobs.list_jobs", compact('jobs'));
+    }
+
+    public function AddSocialLinks(Request $request)
+    {
+        $job = AdminJob::where('id', '=', $request->input("job_id"))->first();
+        $job->social_links = $request->input("social_links");
+        $job->save();
+        return response()->json(['success' => 'Social Links Added']);
+
+
     }
 }

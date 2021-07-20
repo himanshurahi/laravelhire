@@ -34,6 +34,9 @@ class AdminJobMigrationTable extends Migration
         $table->string('budget')->nullable();
 
     
+        $table->text('social_links')->nullable();
+
+    
 
 
 

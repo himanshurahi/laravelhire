@@ -62,6 +62,11 @@ class AdminJobsController extends ModuleCrudController
                         'type' => 'text',
                                             ],
                     
+                
+                                        'social_links' => [
+                        'type' => 'text',
+                                            ],
+                    
                             ],
 
             
