@@ -31,19 +31,36 @@ class JobsController extends Controller
             'budget' => 'required',
         ]);
 
-        $jobs = new AdminJob();
-        $jobs->job_title = $request->job_title;
-        $jobs->job_description = $request->job_description;
-        $jobs->skills = $request->skills;
-        $jobs->job_duration = $request->job_duration;
-        $jobs->budget = $request->budget;
+        if ($request->input("job_id") != null) {
+
+            $job = AdminJob::where("id", '=', $request->input("job_id"))->first();
+            $job->job_title = $request->job_title;
+            $job->job_description = $request->job_description;
+            $job->skills = $request->skills;
+            $job->job_duration = $request->job_duration;
+            $job->budget = $request->budget;
+            $job->save();
+            return response()->json(['success' => $job, 'message' => "Job Updated"]);
 
 
-        // return public_path('assets/img/favicon.png');
-        $jobs->save();
+        } else {
+            $jobs = new AdminJob();
+            $jobs->job_title = $request->job_title;
+            $jobs->job_description = $request->job_description;
+            $jobs->skills = $request->skills;
+            $jobs->job_duration = $request->job_duration;
+            $jobs->budget = $request->budget;
+
+
+            // return public_path('assets/img/favicon.png');
+            $jobs->save();
+            return response()->json(['success' => $jobs, 'message' => "Job Created"]);
+        }
+
+
         // $attachment = $jobs->attach(public_path('assets/img/favicon.png'));
         // return view("jobs.post_job");
-        return response()->json(['success' => $jobs]);
+        
     }
     public function uploadfile(Request $request)
     {
@@ -90,7 +107,5 @@ class JobsController extends Controller
         $job->social_links = $request->input("social_links");
         $job->save();
         return response()->json(['success' => 'Social Links Added']);
-
-
     }
 }

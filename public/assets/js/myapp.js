@@ -10,7 +10,23 @@ let filenames = [];
 let linksArray = [];
 
 
-$("#prev").click(function () {})
+$("#prev").click(function () {
+    if (count <= 0) {
+       
+    } else {
+        $(`[data-id="${count}"]`).removeClass("is-active");
+        count--;
+        $(`[data-step-id="${count}"]`).addClass("is-active");
+        $(`[data-step-id="${count}"]`).removeClass("is-completed");
+        $(`[data-id="${count}"]`).addClass("is-active");
+
+    }
+    // $(`[data-step-id="${
+    //     count + 1
+    // }"]`).addClass("is-active");
+
+
+})
 
 $("#next").click(function () {
     loading(true)
@@ -50,7 +66,8 @@ $("#next").click(function () {
                     job_description,
                     job_duration,
                     budget,
-                    skills: skills1
+                    skills: skills1,
+                    job_id : job_id || null,
                 },
                 success: function (response) {
                     console.log(response)
@@ -120,12 +137,18 @@ $("#next").click(function () {
                     },
                     success: function (response) {
                         console.log(response)
+                        $("#add_links_button").css("visibility", "hidden");
                         loading(false)
                         switchClass(count)
                         $(`[data-id="${count}"]`).removeClass("is-active");
                         count++;
                         $(`[data-id="${count}"]`).addClass("is-active");
                         $("#add_links_button").css("visibility", "hidden");
+                        $("#next").addClass("is-disabled");
+                        $("#next").text("Redirecting..")
+                        setTimeout(() => {
+                            window.location.href = "/jobs"
+                        }, 2000)
                     },
                     error: function (error) {
                         console.log(error)
@@ -138,6 +161,8 @@ $("#next").click(function () {
                 $(`[data-id="${count}"]`).addClass("is-active");
                 loading(false)
                 $("#add_links_button").css("visibility", "hidden");
+
+
             }
 
             // loading(false)
