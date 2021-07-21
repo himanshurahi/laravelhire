@@ -11,11 +11,12 @@ let linksArray = [];
 
 
 $("#prev").click(function () {
-    if (count <= 0) {
-       
-    } else {
+
+
+    if (count <= 0) {} else {
         $(`[data-id="${count}"]`).removeClass("is-active");
         count--;
+        trackCount(count)
         $(`[data-step-id="${count}"]`).addClass("is-active");
         $(`[data-step-id="${count}"]`).removeClass("is-completed");
         $(`[data-id="${count}"]`).addClass("is-active");
@@ -67,7 +68,7 @@ $("#next").click(function () {
                     job_duration,
                     budget,
                     skills: skills1,
-                    job_id : job_id || null,
+                    job_id: job_id || null
                 },
                 success: function (response) {
                     console.log(response)
@@ -76,8 +77,10 @@ $("#next").click(function () {
                     loading(false)
                     switchClass(count)
                     $(`[data-id="${count}"]`).removeClass("is-active");
+
                     count++;
                     $(`[data-id="${count}"]`).addClass("is-active");
+                    trackCount(count)
 
                 },
                 error: function (error) {
@@ -109,10 +112,12 @@ $("#next").click(function () {
                     // You will get response from your PHP page (what you echo or print)
                     loading(false)
                     switchClass(count)
+
                     $(`[data-id="${count}"]`).removeClass("is-active");
                     count++;
                     $(`[data-id="${count}"]`).addClass("is-active");
-                    $("#add_links_button").css("visibility", "visible");
+                    trackCount(count)
+
 
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -137,13 +142,13 @@ $("#next").click(function () {
                     },
                     success: function (response) {
                         console.log(response)
-                        $("#add_links_button").css("visibility", "hidden");
+
                         loading(false)
                         switchClass(count)
                         $(`[data-id="${count}"]`).removeClass("is-active");
                         count++;
                         $(`[data-id="${count}"]`).addClass("is-active");
-                        $("#add_links_button").css("visibility", "hidden");
+                        trackCount(count)
                         $("#next").addClass("is-disabled");
                         $("#next").text("Redirecting..")
                         setTimeout(() => {
@@ -156,11 +161,12 @@ $("#next").click(function () {
                     }
                 });
             } else {
+                switchClass(count)
                 $(`[data-id="${count}"]`).removeClass("is-active");
                 count++;
                 $(`[data-id="${count}"]`).addClass("is-active");
                 loading(false)
-                $("#add_links_button").css("visibility", "hidden");
+                // $("#add_links_button").css("visibility", "hidden");
 
 
             }
@@ -212,15 +218,31 @@ function deleteFunc(index) {
     console.log(linksArray)
 }
 
+// function showAddLinksButton(count) {
+//     if (count == 3) {
+//         $("#add_links_button").css("visibility", "visible");
+//     } else {
+//         $("#add_links_button").css("visibility", "hidden");
+//     }
+// }
+
 function hideModal() {
-    $(".modal-background").removeClass('scaleInCircle');
-    $(".modal-content").removeClass('scaleIn');
+    $("#add_links_modal-background").removeClass('scaleInCircle');
+    $("#add_links_modal-content").removeClass('scaleIn');
     $(".modal-close").addClass('is-hidden');
     setTimeout(() => {
         $("#vertical-form-modal").removeClass('is-active');
     }, 500)
 }
 
+function trackCount(count) {
+    console.log(count)
+    if (count == 2) {
+        $("#add_links_button").css("visibility", "visible");
+    } else {
+        $("#add_links_button").css("visibility", "hidden");
+    }
+}
 
 $("#add_links").click(function () {
     $(".responsive-table > tbody").html("<tr style='background-color: #ff8017'><th>URL</th><th>Actions</th></tr>");

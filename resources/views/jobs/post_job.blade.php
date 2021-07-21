@@ -132,7 +132,7 @@
                             </form>
 
 
-                            <div class="field">
+                            {{-- <div class="field">
                                 <div class="field-label is-normal">
                                     <label class="label">Upload File</label>
                                 </div>
@@ -143,7 +143,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
 
                         </div>
@@ -202,8 +202,8 @@
         
         <!-- Modal Markup -->
         <div id="vertical-form-modal" class="modal modal-sm">
-            <div class="modal-background"></div>
-            <div class="modal-content">
+            <div class="modal-background" id="add_links_modal-background"></div>
+            <div class="modal-content" id="add_links_modal-content">
                 <div class="flex-card simple-shadow">
                     <div class="card-body">
                         <h2 class="title has-text-centered is-3 mb-40">Add Links</h2>
@@ -222,6 +222,7 @@
             <button class="modal-close is-large is-hidden" aria-label="close"></button>
         </div>
         <!-- /Modal Markup -->
+        {{-- @include('layouts.frontend_layouts.error_modal') --}}
 
 @endsection
 

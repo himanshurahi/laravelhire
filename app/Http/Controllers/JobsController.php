@@ -6,6 +6,7 @@ use App\Http\Requests\Request as RequestsRequest;
 use Illuminate\Http\Request;
 use \FileUploader;
 use Modules\AdminJobs\Entities\AdminJob;
+use Illuminate\Support\Facades\DB;
 
 
 class JobsController extends Controller
@@ -16,6 +17,7 @@ class JobsController extends Controller
     {
         // $job =  AdminJob::first();
         // return $job->attachments()->get();
+        // 1626787764964spotify.png
 
         return view("jobs.post_job");
     }
@@ -41,8 +43,6 @@ class JobsController extends Controller
             $job->budget = $request->budget;
             $job->save();
             return response()->json(['success' => $job, 'message' => "Job Updated"]);
-
-
         } else {
             $jobs = new AdminJob();
             $jobs->job_title = $request->job_title;
@@ -60,7 +60,7 @@ class JobsController extends Controller
 
         // $attachment = $jobs->attach(public_path('assets/img/favicon.png'));
         // return view("jobs.post_job");
-        
+
     }
     public function uploadfile(Request $request)
     {
@@ -83,10 +83,21 @@ class JobsController extends Controller
         $jobs = AdminJob::where('id', '=', $request->input('job_id'))->first();
         // return $jobs;
         // $attachment = $jobs->attach(public_path('assets/img/favicon.png'));
+        $filexists = false;
         foreach ($request->input("filenames") as $value) {
-            $jobs->attach(public_path('files/' . $value));
+            $attachment =  DB::table("attachments")->where("filename", '=', $value)->get();
+            if (count($attachment) > 0) {
+                $filexists = true;
+            } else {
+                $jobs->attach(public_path('files/' . $value));
+                $filexists = false;
+            }
         }
-        return response()->json(['success' => 'Done']);
+
+        if ($filexists) {
+            return response()->json(['success' => 'Done', 'message' => "File Already Exist"]);
+        }
+        return response()->json(['success' => 'Done', 'message' => "Attachments Added."]);
     }
 
     public function removeFile(Request $request)
