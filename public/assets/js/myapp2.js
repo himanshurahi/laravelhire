@@ -44,7 +44,7 @@ $("#next").click(function () {
     // do the task
     switch (count) {
         case 0:
-            console.log("Save Jobs")
+            console.log("Save Profile Info")
 
             let skills = []
             // console.log($(document).find(".tag")[0].innerText.split()[0].replace('x', '').trim())

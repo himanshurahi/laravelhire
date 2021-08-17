@@ -1,0 +1,13 @@
+{
+    "name": "Developers",
+    "alias": "developers",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Developers\\Providers\\DevelopersServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

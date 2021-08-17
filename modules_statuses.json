@@ -9,5 +9,6 @@
     "Settings": true,
     "User": true,
     "Dashboard": true,
-    "AdminJobs": true
+    "AdminJobs": true,
+    "Developers": true
 }
