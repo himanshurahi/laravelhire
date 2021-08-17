@@ -9,6 +9,9 @@ let dev_id = null;
 let filenames = [];
 let linksArray = [];
 
+$(document).ready(function () {
+    $("#add_links_button").hide();
+})
 
 $("#prev").click(function () {
 
@@ -31,6 +34,7 @@ $("#prev").click(function () {
 
 $("#next").click(function () {
     loading(true)
+
     if (count >= 3) {
         alert("submit form")
         return;
@@ -62,6 +66,7 @@ $("#next").click(function () {
             let about = $("[name='about']").val()
             let skills1 = $("#skills").val();
             let profile_picture = $("#profile_picture").val();
+
 
             $.ajax({
                 url: "register-developer",
@@ -101,49 +106,54 @@ $("#next").click(function () {
             break;
         case 1:
             console.log("Portfolio Images")
-            if (filenames.length == 0) {
-                console.log("No Files");
-                loading(false)
-                switchClass(count)
+            loading(false)
+            switchClass(count)
 
-                $(`[data-id="${count}"]`).removeClass("is-active");
-                count++;
-                $(`[data-id="${count}"]`).addClass("is-active");
-                trackCount(count)
-            } else {
-                $.ajax({
-                    url: "register-developer",
-                    type: "post",
-                    data: {
-                        filenames,
-                        dev_id,
-                        type: "save_dev_images"
-                    },
-                    success: function (response) {
-                        console.log(response)
-                        // You will get response from your PHP page (what you echo or print)
-                        loading(false)
-                        switchClass(count)
+            $(`[data-id="${count}"]`).removeClass("is-active");
+            count++;
+            $(`[data-id="${count}"]`).addClass("is-active");
+            trackCount(count)
+            // if (filenames.length == 0) {
+            //     console.log("No Files");
+            //     loading(false)
+            //     switchClass(count)
 
-                        $(`[data-id="${count}"]`).removeClass("is-active");
-                        count++;
-                        $(`[data-id="${count}"]`).addClass("is-active");
-                        trackCount(count)
+            //     $(`[data-id="${count}"]`).removeClass("is-active");
+            //     count++;
+            //     $(`[data-id="${count}"]`).addClass("is-active");
+            //     trackCount(count)
+            // } else {
+            //     $.ajax({
+            //         url: "register-developer",
+            //         type: "post",
+            //         data: {
+            //             filenames,
+            //             dev_id,
+            //             type: "save_dev_images"
+            //         },
+            //         success: function (response) {
+            //             console.log(response)
+            //             // You will get response from your PHP page (what you echo or print)
+            //             loading(false)
+            //             switchClass(count)
+
+            //             $(`[data-id="${count}"]`).removeClass("is-active");
+            //             count++;
+            //             $(`[data-id="${count}"]`).addClass("is-active");
+            //             trackCount(count)
 
 
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log(textStatus, errorThrown);
-                        loading(false)
-                    }
-                });
-            }
+            //         },
+            //         error: function (jqXHR, textStatus, errorThrown) {
+            //             console.log(textStatus, errorThrown);
+            //             loading(false)
+            //         }
+            //     });
+            // }
 
             break;
         case 2:
             console.log("Portfolio Links")
-
-          
 
 
             if (linksArray.length != 0) { // jobs-sociallinks
@@ -153,12 +163,12 @@ $("#next").click(function () {
                     type: "post",
                     data: {
                         portfolio_links: JSON.stringify(linksArray),
-                        dev_id: dev_id || null,
-                        type : 'save_portfolio_links'
+                        dev_id: dev_id,
+                        type: 'save_portfolio_links'
                     },
                     success: function (response) {
                         console.log(response)
-    
+
                         loading(false)
                         switchClass(count)
                         $(`[data-id="${count}"]`).removeClass("is-active");
@@ -176,14 +186,20 @@ $("#next").click(function () {
                         loading(false)
                     }
                 });
-               
+
 
             } else {
+                loading(false)
                 switchClass(count)
                 $(`[data-id="${count}"]`).removeClass("is-active");
                 count++;
                 $(`[data-id="${count}"]`).addClass("is-active");
-                loading(false)
+                trackCount(count)
+                $("#next").addClass("is-disabled");
+                $("#next").text("Redirecting..")
+                setTimeout(() => {
+                    window.location.href = "jobs"
+                }, 2000)
             }
 
             // loading(false)
@@ -262,9 +278,9 @@ function hideModal() {
 function trackCount(count) {
     console.log(count)
     if (count == 2) {
-        $("#add_links_button").css("visibility", "visible");
+        $("#add_links_button").show();
     } else {
-        $("#add_links_button").css("visibility", "hidden");
+        $("#add_links_button").hide();
     }
 }
 

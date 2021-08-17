@@ -165,9 +165,10 @@
                         <!-- Step content -->
                         <div class="step-content has-text-centered portfolio_images" data-id="1">
                             <!-- Field -->
-                            <form method="post" action="register-developer-image" enctype="multipart/form-data" class="dropzone"
+                            <form method="post" action="register-developer" enctype="multipart/form-data" class="dropzone"
                                 id="dropzone">
                                 @csrf
+                                <input type="hidden" value="save_dev_files" name="type">
                             </form>
 
 
@@ -217,7 +218,7 @@
                     </div>
                     <!-- Steps navigation -->
                     <div class="steps-actions">
-                        <a href="#" style="visibility: hidden"
+                        <a href="#"
                             class="button secondary-btn button-cta is-bold raised btn-align modal-trigger"
                             data-modal="vertical-form-modal" id="add_links_button">Add Links</a>
                         <div class="steps-action">
