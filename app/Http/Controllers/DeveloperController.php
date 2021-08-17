@@ -52,7 +52,7 @@ class DeveloperController extends Controller
                 return response()->json(['success' => $devs, 'message' => "Dev Updated"]);
             }
         } else if ($type == 'save_dev_images') {
-            $dev = Developer::where('id', '=', '2')->first();
+            $dev = Developer::where('id', '=', $request->input("dev_id"))->first();
             // return $dev;
             // $attachment = $dev->attach(public_path('assets/img/favicon.png'));
             $filexists = false;
@@ -71,7 +71,7 @@ class DeveloperController extends Controller
             }
             return response()->json(['success' => 'Done', 'message' => "Attachments Added."]);
         } else if ($type == 'save_portfolio_link') {
-            $dev = Developer::where('id', '=', '2')->first();
+            $dev = Developer::where('id', '=', $request->input("dev_id"))->first();
             $dev->portfolio_links = $request->input("portfolio_links");
             $dev->save();
             return response()->json(['success' => 'Portfolio Links Added']);

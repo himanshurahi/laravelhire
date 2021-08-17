@@ -152,7 +152,7 @@ $("#next").click(function () {
                     url: "register-developer",
                     type: "post",
                     data: {
-                        social_links: JSON.stringify(linksArray),
+                        portfolio_links: JSON.stringify(linksArray),
                         dev_id: dev_id || null,
                         type : 'save_portfolio_links'
                     },

@@ -210,7 +210,7 @@
                         <!-- Step content -->
                         <div class="step-content has-text-centered final" data-id="3">
                             <img class="confirm-image" src="assets/img/graphics/icons/demo/account.svg">
-                            <h1 class="title is-5">Job Posted Successfully</h1>
+                            <h1 class="title is-5">Registered Successfully</h1>
                             {{-- <p class="pt-10 pb-10 is-muted">You can now login with your credentials and start using the App
                             </p> --}}
                         </div>
