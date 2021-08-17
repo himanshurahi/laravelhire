@@ -5,7 +5,7 @@ $.ajaxSetup({
 });
 
 let count = 0
-let job_id;
+let dev_id = null;
 let filenames = [];
 let linksArray = [];
 
@@ -54,26 +54,33 @@ $("#next").click(function () {
                 skills.push(element.innerText.split()[0].replace('x', '').trim())
             }
             $("#skills").val(skills.join());
-            let job_title = $("[name='job_title']").val()
-            let job_description = $("[name='job_description']").val()
-            let job_duration = $("[name='job_duration']").val()
-            let budget = $("[name='job_budget']").val()
+            let first_name = $("[name='first_name']").val()
+            let last_name = $("[name='last_name']").val()
+            let phone_number = $("[name='phone_number']").val()
+            let email = $("[name='email']").val()
+            let rate = $("[name='rate']").val()
+            let about = $("[name='about']").val()
             let skills1 = $("#skills").val();
+            let profile_picture = $("#profile_picture").val();
+
             $.ajax({
-                url: "post-job",
+                url: "register-developer",
                 type: "post",
                 data: {
-                    job_title,
-                    job_description,
-                    job_duration,
-                    budget,
+                    first_name,
+                    last_name,
+                    phone_number,
+                    email,
+                    rate,
+                    about,
                     skills: skills1,
-                    job_id: job_id || null
+                    profile_picture,
+                    dev_id: dev_id,
+                    type: 'save_dev'
                 },
                 success: function (response) {
+                    dev_id = response.success.id;
                     console.log(response)
-                    // You will get response from your PHP page (what you echo or print)
-                    job_id = response.success.id || null;
                     loading(false)
                     switchClass(count)
                     $(`[data-id="${count}"]`).removeClass("is-active");
@@ -82,67 +89,76 @@ $("#next").click(function () {
                     $(`[data-id="${count}"]`).addClass("is-active");
                     trackCount(count)
 
+
                 },
                 error: function (error) {
-                    let errors = error.responseJSON;
-                    errorsHtml = '<div style = "background-color: red;color: white;text-align: initial;padding: 10px;" class="alert alert-danger"><ul>';
-
-                    $.each(errors.errors, function (key, value) {
-                        errorsHtml += '<li>' + value[0] + '</li>'; // showing only the first error.
-                    });
-                    errorsHtml += '</ul></div>';
-                    $('#errors').html(errorsHtml);
-                    loading(false)
+                    loading(false);
+                    console.log(showErrors(error));
                 }
             });
 
 
             break;
         case 1:
-            console.log("upload File")
-            $.ajax({
-                url: "addfiles",
-                type: "post",
-                data: {
-                    filenames,
-                    job_id
-                },
-                success: function (response) {
-                    console.log(response)
-                    // You will get response from your PHP page (what you echo or print)
-                    loading(false)
-                    switchClass(count)
+            console.log("Portfolio Images")
+            if (filenames.length == 0) {
+                console.log("No Files");
+                loading(false)
+                switchClass(count)
 
-                    $(`[data-id="${count}"]`).removeClass("is-active");
-                    count++;
-                    $(`[data-id="${count}"]`).addClass("is-active");
-                    trackCount(count)
+                $(`[data-id="${count}"]`).removeClass("is-active");
+                count++;
+                $(`[data-id="${count}"]`).addClass("is-active");
+                trackCount(count)
+            } else {
+                $.ajax({
+                    url: "register-developer",
+                    type: "post",
+                    data: {
+                        filenames,
+                        dev_id,
+                        type: "save_dev_images"
+                    },
+                    success: function (response) {
+                        console.log(response)
+                        // You will get response from your PHP page (what you echo or print)
+                        loading(false)
+                        switchClass(count)
+
+                        $(`[data-id="${count}"]`).removeClass("is-active");
+                        count++;
+                        $(`[data-id="${count}"]`).addClass("is-active");
+                        trackCount(count)
 
 
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus, errorThrown);
-                    loading(false)
-                }
-            });
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus, errorThrown);
+                        loading(false)
+                    }
+                });
+            }
+
             break;
         case 2:
-            console.log("Social Links")
+            console.log("Portfolio Links")
+
+          
 
 
             if (linksArray.length != 0) { // jobs-sociallinks
                 console.log(linksArray);
-
                 $.ajax({
-                    url: "jobs-sociallinks",
+                    url: "register-developer",
                     type: "post",
                     data: {
                         social_links: JSON.stringify(linksArray),
-                        job_id: job_id || null
+                        dev_id: dev_id || null,
+                        type : 'save_portfolio_links'
                     },
                     success: function (response) {
                         console.log(response)
-
+    
                         loading(false)
                         switchClass(count)
                         $(`[data-id="${count}"]`).removeClass("is-active");
@@ -160,15 +176,14 @@ $("#next").click(function () {
                         loading(false)
                     }
                 });
+               
+
             } else {
                 switchClass(count)
                 $(`[data-id="${count}"]`).removeClass("is-active");
                 count++;
                 $(`[data-id="${count}"]`).addClass("is-active");
                 loading(false)
-                // $("#add_links_button").css("visibility", "hidden");
-
-
             }
 
             // loading(false)
@@ -216,6 +231,15 @@ function deleteFunc(index) {
     $(document).find("#link-id-" + index).remove();
     linksArray.splice(index, 1)
     console.log(linksArray)
+}
+
+function showErrors(error) {
+    var errorString = '<ul>';
+    $.each(error.responseJSON.errors, function (key, value) {
+        errorString += '<li>' + value + '</li>';
+    });
+    errorString += '</ul>';
+    return errorString;
 }
 
 // function showAddLinksButton(count) {

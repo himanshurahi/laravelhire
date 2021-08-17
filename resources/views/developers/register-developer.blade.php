@@ -12,7 +12,7 @@
                 </ul>
             </div>
         @endif --}}
-       
+
         <div class="column is-8 is-offset-2">
             <!-- Wrapper -->
             <div class="steps-wrapper is-squared">
@@ -104,8 +104,8 @@
                                     <div class="field-body">
                                         <div class="field">
                                             <div class="control">
-                                                <input class="input" name="email" id="email" type="text"
-                                                    placeholder="Email" required autofocus data-validate="require">
+                                                <input class="input" name="email" id="email" type="text" placeholder="Email"
+                                                    required autofocus data-validate="require">
                                             </div>
                                         </div>
                                     </div>
@@ -117,8 +117,8 @@
                                     <div class="field-body">
                                         <div class="field">
                                             <div class="control">
-                                                <input class="input" name="rate" id="rate" type="text"
-                                                    placeholder="$" required autofocus data-validate="require">
+                                                <input class="input" name="rate" id="rate" type="text" placeholder="$"
+                                                    required autofocus data-validate="require">
                                             </div>
                                         </div>
                                     </div>
@@ -144,7 +144,7 @@
                                         <div class="field">
                                             <div class="control">
                                                 <input class="input" name="profile_picture" id="profile_picture" type="file"
-                                                  required autofocus data-validate="require">
+                                                    required>
                                             </div>
                                         </div>
                                     </div>
@@ -165,7 +165,7 @@
                         <!-- Step content -->
                         <div class="step-content has-text-centered portfolio_images" data-id="1">
                             <!-- Field -->
-                            <form method="post" action="" enctype="multipart/form-data" class="dropzone"
+                            <form method="post" action="register-developer-image" enctype="multipart/form-data" class="dropzone"
                                 id="dropzone">
                                 @csrf
                             </form>
@@ -199,13 +199,13 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                
-                                  
-                                  
+
+
+
                                 </div>
                             </div>
-                
-                         
+
+
                         </div>
                         <!-- Step content -->
                         <div class="step-content has-text-centered final" data-id="3">
@@ -217,11 +217,11 @@
                     </div>
                     <!-- Steps navigation -->
                     <div class="steps-actions">
-                        <a href="#"
-                        style="visibility: hidden"
-                        class="button secondary-btn button-cta is-bold raised btn-align modal-trigger"  data-modal="vertical-form-modal" id="add_links_button">Add Links</a>
+                        <a href="#" style="visibility: hidden"
+                            class="button secondary-btn button-cta is-bold raised btn-align modal-trigger"
+                            data-modal="vertical-form-modal" id="add_links_button">Add Links</a>
                         <div class="steps-action">
-                           
+
                             <a href="#" id="prev" data-nav="previous1"
                                 class="button button-cta is-light is-bold btn-align">Back</a>
                             <a href="#" id="next" data-nav="next1"
@@ -234,34 +234,35 @@
     </div>
 
 
-     
-        <!-- Modal trigger -->
-        {{-- <a class="button button-cta btn-align primary-btn raised modal-trigger" data-modal="vertical-form-modal">Open modal</a> --}}
-        <!-- /Modal trigger --> 
-        
-        <!-- Modal Markup -->
-        <div id="vertical-form-modal" class="modal modal-sm">
-            <div class="modal-background" id="add_links_modal-background"></div>
-            <div class="modal-content" id="add_links_modal-content">
-                <div class="flex-card simple-shadow">
-                    <div class="card-body">
-                        <h2 class="title has-text-centered is-3 mb-40">Add Links</h2>
-                        <div class="control-material required is-accent">
-                            <input class="material-input" type="text" id="links" required>
-                            <span class="material-highlight"></span>
-                            <span class="bar"></span>
-                            <label>Enter Link *</label>
-                        </div>
-                        <div class="mt-20">
-                            <button class="button button-cta btn-align accent-btn raised is-fullwidth no-lh" id="add_links">Save</button>
-                        </div>
+
+    <!-- Modal trigger -->
+    {{-- <a class="button button-cta btn-align primary-btn raised modal-trigger" data-modal="vertical-form-modal">Open modal</a> --}}
+    <!-- /Modal trigger -->
+
+    <!-- Modal Markup -->
+    <div id="vertical-form-modal" class="modal modal-sm">
+        <div class="modal-background" id="add_links_modal-background"></div>
+        <div class="modal-content" id="add_links_modal-content">
+            <div class="flex-card simple-shadow">
+                <div class="card-body">
+                    <h2 class="title has-text-centered is-3 mb-40">Add Links</h2>
+                    <div class="control-material required is-accent">
+                        <input class="material-input" type="text" id="links" required>
+                        <span class="material-highlight"></span>
+                        <span class="bar"></span>
+                        <label>Enter Link *</label>
+                    </div>
+                    <div class="mt-20">
+                        <button class="button button-cta btn-align accent-btn raised is-fullwidth no-lh"
+                            id="add_links">Save</button>
                     </div>
                 </div>
             </div>
-            <button class="modal-close is-large is-hidden" aria-label="close"></button>
         </div>
-        <!-- /Modal Markup -->
-        {{-- @include('layouts.frontend_layouts.error_modal') --}}
+        <button class="modal-close is-large is-hidden" aria-label="close"></button>
+    </div>
+    <!-- /Modal Markup -->
+    {{-- @include('layouts.frontend_layouts.error_modal') --}}
 
 @endsection
 
@@ -270,50 +271,49 @@
 @section('scripts')
     <script src="assets/js/myapp2.js"></script>
     <script>
-       
-       Dropzone.options.dropzone = {
-                maxFilesize: 10,
-                renameFile: function(file) {
-                    var dt = new Date();
-                    var time = dt.getTime();
-                    return time + file.name;
-                },
-                acceptedFiles: ".jpeg,.jpg,.png,.gif,.pdf",
-                addRemoveLinks: true,
-                timeout: 60000,
-                success: function(file, response) {
-                    // console.log(file)
-                    console.log(response);
-                    console.log(file)
-                    filenames.push(file.upload.filename);
-                },
-                error: function(file, response) {
-                    console.log("Error")
-                    return false;
-                },
-                removedfile: function(file) {
-                    file.previewElement.remove();
-                    console.log(file)
-                    // /job-upload-file-delete
-                    $.ajax({
-                url: "job-upload-file-delete",
-                type: "delete",
-                data: {
-                   file_name : file.upload.filename
-                },
-                success: function (response) {
-                    console.log(response)
-                    // You will get response from your PHP page (what you echo or print)
-                   
+        Dropzone.options.dropzone = {
+            maxFilesize: 10,
+            renameFile: function(file) {
+                var dt = new Date();
+                var time = dt.getTime();
+                return time + file.name;
+            },
+            acceptedFiles: ".jpeg,.jpg,.png,.gif,.pdf",
+            addRemoveLinks: true,
+            timeout: 60000,
+            success: function(file, response) {
+                // console.log(file)
+                console.log(response);
+                console.log(file)
+                filenames.push(file.upload.filename);
+            },
+            error: function(file, response) {
+                console.log("Invalid File")
+                return false;
+            },
+            removedfile: function(file) {
+                file.previewElement.remove();
+                console.log(file)
+                // /job-upload-file-delete
+                $.ajax({
+                    url: "register-developer",
+                    type: "delete",
+                    data: {
+                        file_name: file.upload.filename, type : "delete_files"
+                    },
+                    success: function(response) {
+                        console.log(response)
+                        // You will get response from your PHP page (what you echo or print)
 
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus, errorThrown);
-                   
-                }
-            });
-                }
-            };
+
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus, errorThrown);
+
+                    }
+                });
+            }
+        };
     </script>
 
 @endsection

@@ -32,4 +32,10 @@ Route::post("/jobs-sociallinks", [App\Http\Controllers\JobsController::class, 'A
 
 //Developers Routes
 Route::get("/register-developer" ,[App\Http\Controllers\DeveloperController::class, 'index']);
-Route::get("/laravel-developers" ,[App\Http\Controllers\DeveloperController::class, 'index']);
+Route::post("/register-developer" ,[App\Http\Controllers\DeveloperController::class, 'store']);
+Route::delete("/register-developer" ,[App\Http\Controllers\DeveloperController::class, 'destroy']);
+Route::post("/register-developer-image" ,[App\Http\Controllers\DeveloperController::class, 'storeImage']);
+// Route::post("/register-developer-addfiles" ,[App\Http\Controllers\DeveloperController::class, 'AddFiles']);
+// Route::delete("/register-developer-removefiles", [App\Http\Controllers\DeveloperController::class, 'removeFile']);
+// Route::post("/register-developer-addlinks", [App\Http\Controllers\DeveloperController::class, 'AddLinks']);
+// Route::get("/laravel-developers" ,[App\Http\Controllers\DeveloperController::class, 'index']);
