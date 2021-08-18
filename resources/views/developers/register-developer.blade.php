@@ -1,6 +1,12 @@
 @extends('layouts.frontend_layouts.app')
 @section('main')
-
+<style>
+    #errors ul{
+        background-color: red; 
+        color: white; 
+        padding : 10px
+    }
+</style>
 
     <div class="columns mt-20">
         {{-- @if ($errors->any())
@@ -51,9 +57,7 @@
                         <!-- Step content -->
                         <div class="step-content has-text-centered is-active account" data-id="0">
                             <div id="errors">
-                                {{-- <ul style="background-color: red; color: white; padding : 10px">
-                                    <li>Error</li>
-                                </ul> --}}
+                               
                             </div>
                             <form action="" method="POST">
                                 <!-- Field -->

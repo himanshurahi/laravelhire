@@ -98,7 +98,8 @@ $("#next").click(function () {
                 },
                 error: function (error) {
                     loading(false);
-                    console.log(showErrors(error));
+                    showErrors(error)
+                    $("#errors").html(showErrors(error));
                 }
             });
 
@@ -250,7 +251,11 @@ function deleteFunc(index) {
 }
 
 function showErrors(error) {
-    var errorString = '<ul>';
+
+    // <ul style="background-color: red; color: white; padding : 10px">
+    // <li>Error</li>
+    // </ul>
+    var errorString = "<ul>";
     $.each(error.responseJSON.errors, function (key, value) {
         errorString += '<li>' + value + '</li>';
     });

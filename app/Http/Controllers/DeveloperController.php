@@ -25,10 +25,11 @@ class DeveloperController extends Controller
                 'first_name' => 'required',
                 'last_name' => 'required',
                 'phone_number' => 'required',
-                'email' => 'required',
+                'email' => 'required|email',
                 'rate' => 'required',
                 'about' => 'required',
                 'skills' => 'required',
+                'profile_picture' => 'required',
             ]);
 
             if ($request->input('dev_id') == null) {
