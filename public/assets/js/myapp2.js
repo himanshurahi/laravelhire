@@ -65,7 +65,7 @@ $("#next").click(function () {
             let rate = $("[name='rate']").val()
             let about = $("[name='about']").val()
             let skills1 = $("#skills").val();
-            let profile_picture = $("#profile_picture").val();
+            let profile_picture = $("#blah").attr('src');
 
 
             $.ajax({
@@ -319,6 +319,20 @@ $("#file").change(function () {
     console.log($(this))
 })
 
+$("#profile_picture").change(function () { // console.log($("#profile_picture")[0].files[0]);
+    readURL($("#profile_picture")[0]);
+})
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result);
+            $('#blah').css("display", "block");
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 
 $(document).ready(function () {
     $('#files').fileuploader({ // Options will go here

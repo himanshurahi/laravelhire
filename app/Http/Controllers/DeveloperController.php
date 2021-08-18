@@ -40,6 +40,7 @@ class DeveloperController extends Controller
                 $devs->rate = $request->rate;
                 $devs->about = $request->about;
                 $devs->skills = $request->skills;
+                $devs->profile_picture = $request->profile_picture;
                 $devs->save();
                 Session::put('dev_id', $devs->id);
                 return response()->json(['success' => $devs, 'message' => "New Dev Added To DB"]);
@@ -51,6 +52,7 @@ class DeveloperController extends Controller
                 $devs->email = $request->email;
                 $devs->rate = $request->rate;
                 $devs->about = $request->about;
+                $devs->profile_picture = $request->profile_picture;
                 $devs->skills = $request->skills;
                 $devs->save();
                 Session::put('dev_id', $devs->id);

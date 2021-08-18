@@ -149,6 +149,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="field">
+                                   <img src="" id="blah" alt="" style="display: none; max-width : 35%">
+                                </div> 
                                 <div class="field mt-10">
                                     <div class="field-label is-normal">
                                         <label class="label">Skills</label>
