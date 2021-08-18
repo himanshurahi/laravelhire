@@ -1,0 +1,13 @@
+{
+    "name": "AdminCompanies",
+    "alias": "admincompanies",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\AdminCompanies\\Providers\\AdminCompaniesServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

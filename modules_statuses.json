@@ -10,5 +10,6 @@
     "User": true,
     "Dashboard": true,
     "AdminJobs": true,
-    "Developers": true
+    "Developers": true,
+    "AdminCompanies": true
 }

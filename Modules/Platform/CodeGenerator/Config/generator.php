@@ -6,12 +6,12 @@ return [
         /**
          * Module Name
          */
-        'module_name' => 'Developers',
+        'module_name' => 'AdminCompanies',
 
         /**
          * Singular module Name
          */
-        'singular_name' => 'Developer',
+        'singular_name' => 'AdminCompany',
 
         /**
          * If set to true. Visibility of records in module will be limited with "Assigned TO" field (User or Group)
@@ -27,12 +27,12 @@ return [
                 /**
                  * Entity name
                  */
-                'name' => 'Developer',
+                'name' => 'AdminCompanies',
 
                 /**
                  * Entity database table name
                  */
-                'table' => 'developers',
+                'table' => 'admin_companies',
 
                 /**
                  * main - Main entity of module.
@@ -85,44 +85,16 @@ return [
                          * rules - rules generated in request object
                          */
                        
-                        'first_name' => [
+                        'company_name' => [
                             'type' => 'string',
                             'rules' => 'required',
                         ],
-                        'last_name' => [
+                        'company_email' => [
                             'type' => 'string',
                             'rules' => 'required',
                         ],
-                        'phone_number' => [
-                            'type' => 'string',
-                            'rules' => 'required',
-                        ],
-                        'email' => [
-                            'type' => 'email',
-                            'rules' => 'required',
-                        ],
-                        'rate' => [
-                            'type' => 'string',
-                            'rules' => 'required',
-                        ],
-                        'about' => [
-                            'type' => 'string',
-                            'rules' => 'required',
-                        ],
-                        'profile_picture' => [
+                        'company_details' => [
                             'type' => 'text',
-                            'rules' => 'required',
-                        ],
-                        'portfolio_links' => [
-                            'type' => 'string',
-                            'rules' => 'required',
-                        ],
-                        'portfolio_images' => [
-                            'type' => 'string',
-                            'rules' => 'required',
-                        ],
-                        'skills' => [
-                            'type' => 'string',
                             'rules' => 'required',
                         ],
                     ],

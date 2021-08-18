@@ -1,13 +1,5 @@
 @extends('layouts.frontend_layouts.app')
 @section('main')
-<style>
-    #errors ul{
-        background-color: red; 
-        color: white; 
-        padding : 10px
-    }
-</style>
-
     <div class="columns mt-20">
         {{-- @if ($errors->any())
             <div class="alert alert-danger">

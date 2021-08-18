@@ -34,16 +34,16 @@ class DeveloperMigrationTable extends Migration
         $table->string('rate')->nullable();
 
     
-        $table->string('about')->nullable();
+        $table->longText('about')->nullable();
 
     
-        $table->text('profile_picture')->nullable();
+        $table->longText('profile_picture')->nullable();
 
     
-        $table->string('portfolio_links')->nullable();
+        $table->longText('portfolio_links')->nullable();
 
     
-        $table->string('portfolio_images')->nullable();
+        $table->longText('portfolio_images')->nullable();
 
     
         $table->string('skills')->nullable();

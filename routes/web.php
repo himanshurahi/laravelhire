@@ -39,3 +39,7 @@ Route::delete("/register-developer" ,[App\Http\Controllers\DeveloperController::
 // Route::delete("/register-developer-removefiles", [App\Http\Controllers\DeveloperController::class, 'removeFile']);
 // Route::post("/register-developer-addlinks", [App\Http\Controllers\DeveloperController::class, 'AddLinks']);
 // Route::get("/laravel-developers" ,[App\Http\Controllers\DeveloperController::class, 'index']);
+
+//companies routes
+Route::get("/register-company" ,[App\Http\Controllers\CompanyController::class, 'index']);
+Route::post("/register-company" ,[App\Http\Controllers\CompanyController::class, 'store']);
