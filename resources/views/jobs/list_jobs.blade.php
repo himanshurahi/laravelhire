@@ -339,7 +339,7 @@
             <!-- Column -->
             <div class="column is-4">
                 <div class="pt-10 pb-10">
-                    <img class="small-footer-logo" src="assets/img/logos/bulkit-logo-g.png" alt="">
+                    <img class="small-footer-logo" src="/assets/img/logos/bulkit-logo-g.png" alt="">
                     <div class="footer-description">
                         Bulkit is built for developers and designers. It's modular approach lets you create an original
                         landing page for your brand.

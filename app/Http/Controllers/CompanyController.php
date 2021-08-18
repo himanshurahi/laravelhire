@@ -26,6 +26,16 @@ class CompanyController extends Controller
         $company->company_email = $request->company_email;
         $company->company_details = $request->company_details;
         $company->save();
-        return redirect('/register-company');
+        return redirect('/laravel-companies');
+    }
+
+    public function show($id){
+        $company = AdminCompany::findOrFail($id);
+        return view('companies.show', compact('company'));
+    }
+
+    public function list(){
+        $companies = AdminCompany::all();
+        return view('companies.list', compact('companies'));
     }
 }

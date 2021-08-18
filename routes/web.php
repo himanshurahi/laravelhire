@@ -43,3 +43,5 @@ Route::delete("/register-developer" ,[App\Http\Controllers\DeveloperController::
 //companies routes
 Route::get("/register-company" ,[App\Http\Controllers\CompanyController::class, 'index']);
 Route::post("/register-company" ,[App\Http\Controllers\CompanyController::class, 'store']);
+Route::get("/laravel-companies/{id}" ,[App\Http\Controllers\CompanyController::class, 'show']);
+Route::get("/laravel-companies" ,[App\Http\Controllers\CompanyController::class, 'list']);

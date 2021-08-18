@@ -1,9 +1,9 @@
-<nav class="navbar navbar-wrapper is-cloned">
+{{-- <nav class="navbar navbar-wrapper is-cloned">
     <div class="container">
         <!-- Brand -->
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
-                <img class="switcher-logo" src="assets/img/logos/logo/bulkit-core.svg" alt="">
+                <img class="switcher-logo" src="/assets/img/logos/logo/bulkit-core.svg" alt="">
             </a>
 
             <!-- Sidebar Trigger -->
@@ -173,8 +173,24 @@
                 </a>
                 <!-- Navbar item -->
                 <a class="navbar-item is-slide is-centered-tablet" href="kit8-pricing.html">
-                    Pricing
+                    Laravel Jobs
                 </a>
+                <a class="navbar-item is-slide is-centered-tablet" href="kit8-pricing.html">
+                    Register Developer
+                </a>
+
+                <a class="navbar-item is-slide is-centered-tablet" href="kit8-pricing.html">
+                    Laravel Developers
+                </a>
+
+                <a class="navbar-item is-slide is-centered-tablet" href="kit8-pricing.html">
+                    Register Company
+                </a>
+
+                <a class="navbar-item is-slide is-centered-tablet" href="kit8-pricing.html">
+                    Laravel Companies
+                </a>
+                
             </div>
 
             <!-- Navbar end -->
@@ -199,7 +215,7 @@
         <!-- Brand -->
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
-                <img class="switcher-logo" src="assets/img/logos/logo/bulkit-core.svg" alt="">
+                <img class="switcher-logo" src="/assets/img/logos/logo/bulkit-core.svg" alt="">
             </a>
 
             <!-- Sidebar Trigger -->
@@ -369,7 +385,22 @@
                 </a>
                 <!-- Navbar item -->
                 <a class="navbar-item is-slide is-centered-tablet" href="kit8-pricing.html">
-                    Pricing
+                    Laravel Jobs
+                </a>
+                <a class="navbar-item is-slide is-centered-tablet" href="kit8-pricing.html">
+                    Register Developer
+                </a>
+
+                <a class="navbar-item is-slide is-centered-tablet" href="kit8-pricing.html">
+                    Laravel Developers
+                </a>
+
+                <a class="navbar-item is-slide is-centered-tablet" href="kit8-pricing.html">
+                    Register Company
+                </a>
+
+                <a class="navbar-item is-slide is-centered-tablet" href="kit8-pricing.html">
+                    Laravel Companies
                 </a>
             </div>
 
@@ -383,6 +414,85 @@
                 <div class="navbar-item is-button is-centered-tablet">
                     <a id="#signup-btn-double" href="kit8-signup.html" class="button button-cta is-bold btn-align primary-btn raised is-rounded">
                         Sign up
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav> --}}
+
+<nav class="navbar navbar-wrapper navbar-default navbar-fade is-transparent">
+    <div class="container">
+        <!-- Brand -->
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <img class="switcher-logo" src="{{asset('assets/img/logos/logo/bulkit-core.svg')}}" alt="">
+            </a>
+
+            <!-- Sidebar Trigger -->
+            <a id="navigation-trigger" class="navbar-item hamburger-btn" href="javascript:void(0);">
+                <span class="menu-toggle">
+                    <span class="icon-box-toggle">
+                        <span class="rotate">
+                            <i class="icon-line-top"></i>
+                            <i class="icon-line-center"></i>
+                            <i class="icon-line-bottom"></i>
+                        </span>
+                    </span>
+                </span>
+            </a>
+
+            <!-- Responsive toggle -->
+            <div class="custom-burger" data-target="">
+                <a id="" class="responsive-btn" href="javascript:void(0);">
+                    <span class="menu-toggle">
+                        <span class="icon-box-toggle">
+                            <span class="rotate">
+                                <i class="icon-line-top"></i>
+                                <i class="icon-line-center"></i>
+                                <i class="icon-line-bottom"></i>
+                            </span>
+                        </span>
+                    </span>
+                </a>
+            </div>
+            <!-- /Responsive toggle -->
+        </div>
+
+        <!-- Navbar menu -->
+        <div class="navbar-menu">
+            <!-- Navbar Start -->
+            <div class="navbar-start">
+                <!-- Navbar item -->
+                <a class="navbar-item is-slide is-centered-tablet active" href="kit8-pricing.html">
+                    Post Jobs
+                </a>
+                <a class="navbar-item is-slide is-centered-tablet" href="/jobs">
+                    Laravel Jobs
+                </a>
+                <a class="navbar-item is-slide is-centered-tablet" href="/register-developer">
+                    Register Developer
+                </a>
+
+                <a class="navbar-item is-slide is-centered-tablet" href="kit8-pricing.html">
+                    Laravel Developers
+                </a>
+
+                <a class="navbar-item is-slide is-centered-tablet" href="/register-company">
+                    Register Company
+                </a>
+
+                <a class="navbar-item is-slide is-centered-tablet" href="/laravel-companies">
+                    Laravel Companies
+                </a>
+            </div>
+
+            <!-- Navbar end -->
+            <div class="navbar-end">
+                <!-- Signup button -->
+                <div class="navbar-item is-button">
+                    <a id="#signup-btn" href="#" class="button button-cta is-bold btn-align primary-btn raised">
+                        Register
                     </a>
                 </div>
             </div>
